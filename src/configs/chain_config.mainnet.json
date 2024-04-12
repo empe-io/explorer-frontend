@@ -1,20 +1,20 @@
 {
-  "title": "Cosmos Block Explorer",
-  "network": "cosmoshub-4",
+  "title": "Empe Block Explorer",
+  "network": "empe-chain-1",
   "prefix": {
-    "consensus": "cosmosvalcons",
-    "validator": "cosmosvaloper",
-    "account": "cosmos"
+    "consensus": "empevalcons",
+    "validator": "empevaloper",
+    "account": "empe"
   },
   "genesis": {
     "time": "2021-07-13T08:00:00",
     "height": 1
   },
-  "primaryTokenUnit": "uatom",
-  "votingPowerTokenUnit": "uatom",
+  "primaryTokenUnit": "uempe",
+  "votingPowerTokenUnit": "uempe",
   "tokenUnits": {
-    "uatom": {
-      "display": "atom",
+    "uempe": {
+      "display": "empe",
       "exponent": 6
     }
   },

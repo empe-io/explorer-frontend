@@ -1,0 +1,7 @@
+# docker-compose.yml
+version: '3'
+services:
+  empe-frontend:
+    image: empe-frontend-new:v0.0.1
+    ports:
+      - "3000:3000"
