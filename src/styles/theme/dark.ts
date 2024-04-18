@@ -50,9 +50,9 @@ export const darkThemeOverride = {
         four: '#E3AB55',
       },
       tokenomics: {
-        one: '#5E94FF',
-        two: '#E3AB55',
-        three: '#5ACF78',
+        two: '#803ab1',
+        three: '#4487f9',
+        one: '#74f0ef',
       },
       results: {
         pass: '#1EC490',

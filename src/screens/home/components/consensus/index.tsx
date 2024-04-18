@@ -31,7 +31,7 @@ const Consensus: React.FC<{
   const data = [
     {
       value: state.roundCompletion,
-      fill: theme.palette.primary.main,
+      fill: '#74f0ef',
     },
   ];
 
