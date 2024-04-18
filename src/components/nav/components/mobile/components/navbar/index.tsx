@@ -36,7 +36,7 @@ const Navbar = (props:NavbarProps) => {
         {/* =================================== */}
         {/* Network */}
         {/* =================================== */}
-        <div
+        {/* <div
           className={classes.network}
           onClick={openNetwork}
           role="button"
@@ -45,7 +45,7 @@ const Navbar = (props:NavbarProps) => {
             {selected}
           </p>
           <ExpandMore fontSize="small" />
-        </div>
+        </div> */}
         {/* =================================== */}
         {/* Hamburger */}
         {/* =================================== */}
