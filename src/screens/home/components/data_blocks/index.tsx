@@ -8,27 +8,25 @@ import { useDataBlocks } from './hooks';
 
 const DataBlocks: React.FC<{
   className?: string;
-}> = ({
-  className,
-}) => {
+}> = ({ className }) => {
   const { t } = useTranslation('home');
   const classes = useStyles();
   const { state } = useDataBlocks();
   const data = [
     {
-      key: t('latestBlock'),
-      value: numeral(state.blockHeight).format('0,0'),
+      key: 'Transactions Created',
+      value: state.counters.bankTxCreated,
       className: classes.blockHeight,
+    },
+    {
+      key: 'Did Documents Created',
+      value: state.counters.didCreated,
+      className: classes.didCreated,
     },
     {
       key: t('averageBlockTime'),
       value: `${numeral(state.blockTime).format('0.00')} s`,
       className: classes.blockTime,
-    },
-    {
-      key: t('price'),
-      value: state.price !== null ? `$${numeral(state.price).format('0.00')}` : 'N/A',
-      className: classes.price,
     },
     {
       key: t('activeValidators'),

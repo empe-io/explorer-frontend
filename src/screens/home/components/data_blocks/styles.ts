@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = () => {
   const styles = makeStyles(
     (theme) => {
-      return ({
+      return {
         root: {
           display: 'grid',
           gridGap: theme.spacing(1),
@@ -17,19 +17,27 @@ export const useStyles = () => {
           },
         },
         blockHeight: {
-          background: theme.palette.custom.primaryData.one,
+          background:
+            'linear-gradient(130deg, rgba(0,176,255,1) 0%, rgba(0,114,255,1) 100%)',
         },
         blockTime: {
-          background: theme.palette.custom.primaryData.two,
+          background:
+            'linear-gradient(130deg, rgba(0,114,255,1) 0%, rgba(140,54,185,1) 100%)',
         },
-        price: {
-          background: theme.palette.custom.primaryData.three,
+        didCreated: {
+          background: '#0072ff',
+        },
+        transactionsCreated: {
+          background:
+            'linear-gradient(130deg, rgba(0,114,255,1) 0%, rgba(140,54,185,1) 100%)',
         },
         validators: {
-          background: theme.palette.custom.primaryData.four,
+          background:
+            'linear-gradient(130deg, rgba(140,54,185,1) 29%, rgba(209,36,235,1) 100%)',
         },
-      });
-    }, { index: 1 },
+      };
+    },
+    { index: 1 },
   )();
 
   return styles;

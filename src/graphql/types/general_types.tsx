@@ -11827,6 +11827,42 @@ export type ValidatorAddressesQuery = { validator: Array<(
   )> };
 
 
+  export type TxsCountQuery = { bankTx: 
+    { __typename?: 'transaction_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'transaction_aggregate_fields' }
+      & Pick<Transaction_Aggregate_Fields, 'count'>
+    )> }, didCreated: (
+      { __typename?: 'transaction_aggregate' }
+      & { aggregate?: Maybe<(
+        { __typename?: 'transaction_aggregate_fields' }
+        & Pick<Transaction_Aggregate_Fields, 'count'>
+      )> }
+  ) };
+
+  
+  export type TxsCountQueryVariables = Exact<{ [key: string]: never; }>;
+
+  export const TxsCountDocument = gql`
+  query TxsCount {
+    bankTx: transaction_aggregate(where: {raw_log: {_regex: "cosmos.bank.v1beta1.MsgSend"}}) {
+      aggregate {
+        count
+      }
+    }
+    didCreated: transaction_aggregate(where: {messages: {_cast: {String: {_regex: "empe.diddoc.MsgCreateDidDocument"}}}}) {
+      aggregate {
+        count
+      }
+    }
+  }`;
+  
+  export function useTxsCountQuery(baseOptions?: Apollo.QueryHookOptions<TxsCountQuery, TxsCountQueryVariables>) {
+    const options = {...defaultOptions, ...baseOptions}
+    const result = Apollo.useQuery<TxsCountQuery, TxsCountQueryVariables>(TxsCountDocument, options);
+    return result;
+  }
+
 export const AccountCommissionDocument = gql`
     query AccountCommission($validatorAddress: String!) {
   commission: action_validator_commission_amount(address: $validatorAddress) {

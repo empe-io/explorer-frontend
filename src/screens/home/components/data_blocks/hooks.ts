@@ -9,6 +9,7 @@ import {
   TokenPriceListenerSubscription,
   useActiveValidatorCountQuery,
   ActiveValidatorCountQuery,
+  useTxsCountQuery,
 } from '@graphql/types/general_types';
 import { chainConfig } from '@configs';
 
@@ -17,17 +18,37 @@ export const useDataBlocks = () => {
     blockHeight: number;
     blockTime: number;
     price: number | null;
+    counters: {
+      didCreated: number;
+      bankTxCreated: number;
+    };
     validators: {
       active: number;
       total: number;
-    }
+    };
   }>({
     blockHeight: 0,
     blockTime: 0,
     price: null,
+    counters: {
+      didCreated: 0,
+      bankTxCreated: 0,
+    },
     validators: {
       active: 0,
       total: 0,
+    },
+  });
+
+  useTxsCountQuery({
+    onCompleted: (data) => {
+      setState((prevState) => ({
+        ...prevState,
+        counters: {
+          didCreated: data.didCreated.aggregate.count,
+          bankTxCreated: data.bankTx.aggregate.count,
+        },
+      }));
     },
   });
 
