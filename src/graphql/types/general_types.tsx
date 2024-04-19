@@ -11827,18 +11827,11 @@ export type ValidatorAddressesQuery = { validator: Array<(
   )> };
 
 
-  export type TxsCountQuery = { bankTx: 
-    { __typename?: 'transaction_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'transaction_aggregate_fields' }
-      & Pick<Transaction_Aggregate_Fields, 'count'>
-    )> }, didCreated: (
-      { __typename?: 'transaction_aggregate' }
-      & { aggregate?: Maybe<(
-        { __typename?: 'transaction_aggregate_fields' }
-        & Pick<Transaction_Aggregate_Fields, 'count'>
-      )> }
-  ) };
+  export type TxsCountQuery = { 
+    bankTx: ({ __typename?: 'transaction_aggregate' } & { aggregate?: Maybe<({ __typename?: 'transaction_aggregate_fields' }& Pick<Transaction_Aggregate_Fields, 'count'>)> }),
+    didCreated: ({ __typename?: 'transaction_aggregate' } & { aggregate?: Maybe<({ __typename?: 'transaction_aggregate_fields' } & Pick<Transaction_Aggregate_Fields, 'count'>)> }), 
+    allTx: ({ __typename?: 'transaction_aggregate' } & { aggregate?: Maybe<({ __typename?: 'transaction_aggregate_fields' } & Pick<Transaction_Aggregate_Fields, 'count'>)> }) 
+  };
 
   
   export type TxsCountQueryVariables = Exact<{ [key: string]: never; }>;
@@ -11846,6 +11839,11 @@ export type ValidatorAddressesQuery = { validator: Array<(
   export const TxsCountDocument = gql`
   query TxsCount {
     bankTx: transaction_aggregate(where: {raw_log: {_regex: "cosmos.bank.v1beta1.MsgSend"}}) {
+      aggregate {
+        count
+      }
+    }
+    allTx: transaction_aggregate {
       aggregate {
         count
       }

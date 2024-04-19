@@ -19,6 +19,7 @@ export const useDataBlocks = () => {
     blockTime: number;
     price: number | null;
     counters: {
+      allTx: number;
       didCreated: number;
       bankTxCreated: number;
     };
@@ -31,6 +32,7 @@ export const useDataBlocks = () => {
     blockTime: 0,
     price: null,
     counters: {
+      allTx: 0,
       didCreated: 0,
       bankTxCreated: 0,
     },
@@ -45,6 +47,7 @@ export const useDataBlocks = () => {
       setState((prevState) => ({
         ...prevState,
         counters: {
+          allTx: data.allTx.aggregate.count,
           didCreated: data.didCreated.aggregate.count,
           bankTxCreated: data.bankTx.aggregate.count,
         },
