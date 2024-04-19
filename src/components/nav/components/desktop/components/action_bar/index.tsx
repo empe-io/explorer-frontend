@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { useGetComponentDimension } from '@hooks';
 import { useStyles } from './styles';
 import {
-  Network,
   NetworkList,
   SettingsList,
 } from './components';
@@ -12,9 +11,9 @@ import { SearchBar } from '../../..';
 const ActionBar: React.FC<{
   isNetwork: boolean;
   className?: string;
+  // @eslint-disable-next-line
   toggleNetwork: () => void;
 }> = ({
-  toggleNetwork,
   className,
   isNetwork,
 }) => {

@@ -1,7 +1,6 @@
 import BlockIcon from '@assets/icon-block.svg';
 import HomeIcon from '@assets/icon-home.svg';
 import TransactionIcon from '@assets/icon-transaction.svg';
-import ProposalsIcon from '@assets/icon-proposals.svg';
 import UserIcon from '@assets/icon-user.svg';
 import ParamIcon from '@assets/icon-param.svg';
 import {
@@ -9,7 +8,6 @@ import {
   BLOCKS,
   VALIDATORS,
   TRANSACTIONS,
-  PROPOSALS,
   PARAMS,
 } from '@utils/go_to_page';
 
