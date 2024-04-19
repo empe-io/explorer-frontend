@@ -26,7 +26,7 @@ const VotingPower: React.FC<{
 
   const classes = useStyles(votingPowerPercent.format(0, Math.floor));
 
-  const votingPower = status === 3 ? numeral(data.self).format('0,0') : '0';
+  const votingPower = status === 3 ? numeral(data.self / 1000000).format('0,0') : '0';
 
   return (
     <Box className={classnames(className, classes.root)}>
