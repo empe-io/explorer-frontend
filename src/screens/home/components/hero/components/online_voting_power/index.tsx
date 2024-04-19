@@ -21,7 +21,7 @@ const OnlineVotingPower: React.FC<ComponentDefault> = () => {
       </Typography>
       <div className={classes.data}>
         <Typography variant="h3" className="primary__data">
-          {`${votingPowerPercent.format('0,0.00', (n) => ~~n)}%`}
+          {`${votingPowerPercent.format('0,0.00', (n) => ~~(n/1000000))}%`}
         </Typography>
         <Typography variant="body1">
           {numeral(state.votingPower).format('0,0')}
@@ -48,7 +48,7 @@ const OnlineVotingPower: React.FC<ComponentDefault> = () => {
             {t('votingPowerPercent')}
           </Typography>
           <Typography variant="body1" className="value">
-            {`${votingPowerPercent.format('0,0.00', (n) => ~~n)}%`}
+            {`${votingPowerPercent.format('0,0.00', (n) => ~~(n/1000000))}%`}
           </Typography>
         </div>
         <div className={classes.item}>
