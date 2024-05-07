@@ -47,9 +47,13 @@ export const useDataBlocks = () => {
       setState((prevState) => ({
         ...prevState,
         counters: {
-          allTx: data.allTx.aggregate.count,
-          didCreated: data.didCreated.aggregate.count,
-          bankTxCreated: data.bankTx.aggregate.count,
+          allTx: 0,
+          // eslint-disable-next-line max-len
+          // 1525976 = didCreated: transaction_aggregate(where: {messages: {_cast: {String: {_regex: "empe.diddoc.MsgCreateDidDocument"}}}, height: {_lte: "287000"}})
+          didCreated: data.didCreated.aggregate.count + 1525976,
+          // eslint-disable-next-line max-len
+          // 57225 = bankTx: transaction_aggregate(where: {raw_log: {_regex: "cosmos.bank.v1beta1.MsgSend"}, height: {_lte: "287000"}})
+          bankTxCreated: data.bankTx.aggregate.count + 57225,
         },
       }));
     },
