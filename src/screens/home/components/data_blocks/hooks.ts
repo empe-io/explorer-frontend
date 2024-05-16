@@ -42,33 +42,47 @@ export const useDataBlocks = () => {
     },
   });
 
-  useTxsCountQuery({
-    onCompleted: (data) => {
+  const handleCountersData = async (res: Response) => {
+    let counters = {
+      allTx: 0,
+      didCreated: 0,
+      bankTxCreated: 0,
+    };
+
+    if (!res.ok) {
       setState((prevState) => ({
         ...prevState,
-        counters: {
-          allTx: 0,
-          // eslint-disable-next-line max-len
-          // 1525976 = didCreated: transaction_aggregate(where: {messages: {_cast: {String: {_regex: "empe.diddoc.MsgCreateDidDocument"}}}, height: {_lte: "287000"}})
-          didCreated: data.didCreated.aggregate.count + 1525976,
-          // eslint-disable-next-line max-len
-          // 57225 = bankTx: transaction_aggregate(where: {raw_log: {_regex: "cosmos.bank.v1beta1.MsgSend"}, height: {_lte: "287000"}})
-          bankTxCreated: data.bankTx.aggregate.count + 57225,
-        },
+        counters,
       }));
-    },
-  });
+
+      return;
+    }
+
+    const data = await res.json();
+    counters = {
+      allTx: 0,
+      didCreated: data['empe.diddoc.MsgCreateDidDocument'],
+      bankTxCreated: data['cosmos.bank.v1beta1.MsgSend'],
+    };
+
+    setState((prevState) => ({
+      ...prevState,
+      counters,
+    }));
+  };
 
   // ====================================
   // block height
   // ====================================
 
   useLatestBlockHeightListenerSubscription({
-    onSubscriptionData: (data) => {
+    onSubscriptionData: async (data) => {
       setState((prevState) => ({
         ...prevState,
         blockHeight: R.pathOr(0, ['height', 0, 'height'], data.subscriptionData.data),
       }));
+
+      fetch('https://p0k5m1l3wh.execute-api.eu-central-1.amazonaws.com/counters').then((res) => handleCountersData(res));
     },
   });
 
