@@ -20,7 +20,7 @@ const DataBlocks: React.FC<{
       className: classes.blockHeight,
     },
     {
-      key: 'Did Documents Created',
+      key: 'DID Documents Created',
       value: state.counters.didCreated,
       className: classes.didCreated,
     },
