@@ -12,6 +12,11 @@ export const columns:{
     width: 25,
   },
   {
+    key: 'type',
+    align: 'right',
+    width: 25,
+  },
+  {
     key: 'result',
     align: 'right',
     width: 25,

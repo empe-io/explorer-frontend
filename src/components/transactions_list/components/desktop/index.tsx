@@ -21,6 +21,7 @@ import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import { TransactionsListState } from '../../types';
 import { columns } from './utils';
 import { useStyles } from './styles';
+import Tag from '../../../tag';
 
 const Desktop: React.FC<TransactionsListState> = ({
   className,

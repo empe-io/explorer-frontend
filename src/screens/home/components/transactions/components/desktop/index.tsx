@@ -20,6 +20,7 @@ import { Result } from '@components';
 import { useStyles } from './styles';
 import { columns } from './utils';
 import { TransactionType } from '../../types';
+import Tag from '@src/components/tag';
 
 const Desktop: React.FC<{
   className?: string;
@@ -47,6 +48,12 @@ const Desktop: React.FC<{
             })}
           </Typography>
         </Link>
+      ),
+      type: (
+        <div>
+          <Tag value={x.type} theme="six" />
+          {x.messages > 1 && ` + ${x.messages - 1}`}
+        </div>
       ),
       result: (
         <Result success={x.success} />
