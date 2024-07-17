@@ -1,8 +1,6 @@
 import * as MODELS from '@models';
 import * as R from 'ramda';
-import {
-  Tag,
-} from '@components';
+import { Tag } from '@components';
 import * as COMPONENTS from '@msg';
 
 const getDataByType = (type: string) => {
@@ -403,6 +401,26 @@ const getDataByType = (type: string) => {
       tagDisplay: 'txUnblockUserLabel',
     },
 
+    '/empe.diddoc.MsgCreateDidDocument': {
+      model: MODELS.MsgCreateDidDocument,
+      content: COMPONENTS.CreateDidDocument,
+      tagTheme: 'four',
+      tagDisplay: 'txCreateDidDocumentLabel',
+    },
+
+    '/empe.diddoc.MsgUpdateDidDocument': {
+      model: MODELS.MsgUpdateDidDocument,
+      content: COMPONENTS.UpdateDidDocument,
+      tagTheme: 'four',
+      tagDisplay: 'txUpdateDidDocumentLabel',
+    },
+
+    '/empe.diddoc.MsgDeactivateDidDocument': {
+      model: MODELS.MsgDeactivateDidDocument,
+      content: COMPONENTS.DeactivateDidDocument,
+      tagTheme: 'four',
+      tagDisplay: 'txDeactivateDidDocumentLabel',
+    },
   };
 
   if (defaultTypeToModel[type]) return defaultTypeToModel[type];
@@ -427,7 +445,7 @@ export const getMessageModelByType = (type: string) => {
  * Helper function to correctly display the correct UI
  * @param type Model type
  */
-export const getMessageByType = (message: any, viewRaw: boolean, t:any) => {
+export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
   const { type } = message;
   let results: {
     content: any;
