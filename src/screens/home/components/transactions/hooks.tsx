@@ -23,14 +23,9 @@ export const useTransactions = () => {
 
   const formatTransactions = (data: TransactionsListenerSubscription) => {
     return data.transactions.map((x) => {
-      const msgType =
-        x.messages?.map((eachMsg: unknown) => {
-          const eachMsgType = eachMsg["@type"];
-          return eachMsgType ?? '';
-        }) ?? [];
-      const convertedMsgType = convertMsgType(msgType);
+      const msgType = msgTypeFromMessages(x.messages);
       return ({
-        type: convertedMsgType,
+        type: msgType,
         height: x.height,
         hash: x.hash,
         success: x.success,
@@ -44,6 +39,14 @@ export const useTransactions = () => {
     state,
   };
 };
+
+export const msgTypeFromMessages = (messages: unknown[]) => {
+  const msgType = messages?.map((eachMsg: unknown) => {
+    const eachMsgType = eachMsg["@type"];
+    return eachMsgType ?? '';
+  }) ?? [];
+  return convertMsgType(msgType);
+}
 
 export const convertMsgType = (type: string[]) => {
   const typeTitle = type?.map((eachType) => {

@@ -7,6 +7,7 @@ import {
 } from '@graphql/types/general_types';
 import { convertMsgsToModels } from '@msg';
 import { TransactionsState } from './types';
+import { convertMsgType, msgTypeFromMessages } from '@screens/home/components/transactions/hooks';
 
 export const useTransactions = () => {
   const [state, setState] = useState<TransactionsState>({
@@ -114,7 +115,9 @@ export const useTransactions = () => {
 
     return formattedData.map((x) => {
       const messages = convertMsgsToModels(x);
+      const msgType = msgTypeFromMessages(x.messages);
       return ({
+        type: msgType,
         height: x.height,
         hash: x.hash,
         messages: {
