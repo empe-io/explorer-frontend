@@ -14,12 +14,17 @@ export const columns:{
   {
     key: 'messages',
     align: 'right',
-    width: 15,
+    width: 5,
+  },
+  {
+    key: 'type',
+    align: 'right',
+    width: 20,
   },
   {
     key: 'result',
     align: 'right',
-    width: 20,
+    width: 10,
   },
   {
     key: 'time',

@@ -68,6 +68,9 @@ import GrantAllowance from './feegrant/grant_allowance';
 import RevokeAllowance from './feegrant/revoke_allowance';
 import CreateVestingAccount from './vesting/create_vesting_account';
 import CreatePeriodicVestingAccount from './vesting/create_periodic_vesting_account';
+import CreateDidDocument from './diddoc/create_did_document';
+import UpdateDidDocument from './diddoc/update_did_document';
+import DeactivateDidDocument from './diddoc/deactivate_did_document';
 
 export {
   getMessageModelByType,
@@ -134,4 +137,7 @@ export {
   RevokeAllowance,
   CreateVestingAccount,
   CreatePeriodicVestingAccount,
+  CreateDidDocument,
+  UpdateDidDocument,
+  DeactivateDidDocument,
 };

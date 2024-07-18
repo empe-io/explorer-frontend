@@ -12,11 +12,12 @@ const SingleTransaction:React.FC<{
   block: React.ReactNode;
   hash: React.ReactNode;
   time: string;
+  type: string;
   messageCount: string;
   messages: any[];
   result?: React.ReactNode;
 }> = ({
-  className, block, hash, time, messages, result, messageCount,
+  className, block, hash, time, messages, result, messageCount,type,
 }) => {
   const { t } = useTranslation('transactions');
   const classes = useStyles();
@@ -35,6 +36,12 @@ const SingleTransaction:React.FC<{
               {t('block')}
             </Typography>
             {block}
+          </div>
+          <div className={classes.item}>
+            <Typography variant="h4" className="label">
+              {t('type')}
+            </Typography>
+            {type}
           </div>
           <div className={classnames(classes.item, 'time')}>
             <Typography variant="h4" className="label">

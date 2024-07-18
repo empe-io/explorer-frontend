@@ -21,6 +21,7 @@ import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import { TransactionsListState } from '../../types';
 import { columns } from './utils';
 import { useStyles } from './styles';
+import Tag from '../../../tag';
 
 const Desktop: React.FC<TransactionsListState> = ({
   className,
@@ -56,6 +57,12 @@ const Desktop: React.FC<TransactionsListState> = ({
           })}
         </Typography>
       </Link>
+    ),
+    type: (
+      <div>
+        <Tag value={x.type} theme="six" />
+        {x.messages.count > 1 && ` + ${x.messages.count - 1}`}
+      </div>
     ),
     result: (
       <Result success={x.success} />

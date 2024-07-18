@@ -17,7 +17,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import { mergeRefs } from '@utils/merge_refs';
 import {
   Loading,
-  Result,
+  Result, Tag,
 } from '@components';
 import {
   useList,
@@ -72,6 +72,12 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
           )}
         </Typography>
       </Link>
+    ),
+    type: (
+      <div>
+        <Tag value={x.type} theme="six" />
+        {x.messages.count > 1 && ` + ${x.messages.count - 1}`}
+      </div>
     ),
     result: (
       <Result success={x.success} />

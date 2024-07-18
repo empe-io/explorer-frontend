@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import {
-  useTransactionsListenerSubscription,
-  TransactionsListenerSubscription,
-} from '@graphql/types/general_types';
+import { TransactionsListenerSubscription, useTransactionsListenerSubscription } from '@graphql/types/general_types';
 import { TransactionsState } from './types';
 
 export const useTransactions = () => {
@@ -23,7 +20,9 @@ export const useTransactions = () => {
 
   const formatTransactions = (data: TransactionsListenerSubscription) => {
     return data.transactions.map((x) => {
+      const msgType = msgTypeFromMessages(x.messages);
       return ({
+        type: msgType,
         height: x.height,
         hash: x.hash,
         success: x.success,
@@ -36,4 +35,24 @@ export const useTransactions = () => {
   return {
     state,
   };
+};
+
+export const msgTypeFromMessages = (messages: unknown[]) => {
+  const msgType = messages?.map((eachMsg: unknown) => {
+    const eachMsgType = eachMsg['@type'];
+    return eachMsgType ?? '';
+  }) ?? [];
+  return convertMsgType(msgType);
+};
+
+export const convertMsgType = (type: string[]) => {
+  const typeTitle = type?.map((eachType) => {
+    const wordIndex = eachType.indexOf('Msg');
+    const msgStringLength = 'Msg'.length;
+    const msgTitle = eachType.substring(wordIndex + msgStringLength);
+    const msgTitleSeperatedByUpperCase = msgTitle.match(/[A-Z][a-z]+|[0-9]+/g)?.join(' ');
+    return msgTitleSeperatedByUpperCase ?? '';
+  });
+
+  return typeTitle;
 };

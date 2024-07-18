@@ -16,6 +16,7 @@ import {
 } from '@utils/go_to_page';
 
 import { TransactionType } from '../../types';
+import Tag from '../../../../../../components/tag';
 
 const Mobile:React.FC<{
   className?: string;
@@ -40,6 +41,15 @@ const Mobile:React.FC<{
             })}
           </Typography>
         </Link>
+      ),
+      type: (
+        <div>
+          <Tag value={x.type} theme="six" />
+          {x.messages > 1 && ` + ${x.messages - 1}`}
+        </div>
+      ),
+      result: (
+        <Result success={x.success} />
       ),
       result: (
         <Result success={x.success} />

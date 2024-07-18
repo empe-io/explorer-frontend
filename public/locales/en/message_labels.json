@@ -54,5 +54,8 @@
   "MsgGrantAllowance": "Grant Allowance",
   "MsgRevokeAllowance": "Revoke Allowance",
   "MsgCreateVestingAccount": "Create Vesting Account",
-  "MsgCreatePeriodicVestingAccount": "Create Periodic Vesting Account"
+  "MsgCreatePeriodicVestingAccount": "Create Periodic Vesting Account",
+  "txCreateDidDocumentLabel": "Create DID Document",
+  "txUpdateDidDocumentLabel": "Update DID Document",
+  "txDeactivateDidDocumentLabel": "Deactivate DID Document"
 }
