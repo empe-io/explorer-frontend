@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import * as R from 'ramda';
 import {
-  useTransactionsQuery,
-  useTransactionsListenerSubscription,
   TransactionsListenerSubscription,
+  useTransactionsListenerSubscription,
+  useTransactionsQuery,
 } from '@graphql/types/general_types';
 import { convertMsgsToModels } from '@msg';
+import { msgTypeFromMessages } from '@screens/home/components/transactions/hooks';
 import { TransactionsState } from './types';
-import { convertMsgType, msgTypeFromMessages } from '@screens/home/components/transactions/hooks';
 
 export const useTransactions = () => {
   const [state, setState] = useState<TransactionsState>({

@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import {
-  useTransactionsListenerSubscription,
-  TransactionsListenerSubscription,
-} from '@graphql/types/general_types';
+import { TransactionsListenerSubscription, useTransactionsListenerSubscription } from '@graphql/types/general_types';
 import { TransactionsState } from './types';
 
 export const useTransactions = () => {
@@ -42,11 +39,11 @@ export const useTransactions = () => {
 
 export const msgTypeFromMessages = (messages: unknown[]) => {
   const msgType = messages?.map((eachMsg: unknown) => {
-    const eachMsgType = eachMsg["@type"];
+    const eachMsgType = eachMsg['@type'];
     return eachMsgType ?? '';
   }) ?? [];
   return convertMsgType(msgType);
-}
+};
 
 export const convertMsgType = (type: string[]) => {
   const typeTitle = type?.map((eachType) => {

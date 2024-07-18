@@ -2,10 +2,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { convertMsgsToModels } from '@msg';
 import * as R from 'ramda';
-import {
-  useGetMessagesByAddressQuery,
-  GetMessagesByAddressQuery,
-} from '@graphql/types/general_types';
+import { GetMessagesByAddressQuery, useGetMessagesByAddressQuery } from '@graphql/types/general_types';
+import { msgTypeFromMessages } from '@screens/home/components/transactions/hooks';
 import { TransactionState } from './types';
 
 const LIMIT = 50;
@@ -77,9 +75,11 @@ export const useTransactions = () => {
       // =============================
       // messages
       // =============================
-      const messages = convertMsgsToModels(transaction);
 
+      const messages = convertMsgsToModels(transaction);
+      const msgType = msgTypeFromMessages(x.transaction.messages);
       return ({
+        type: msgType,
         height: transaction.height,
         hash: transaction.hash,
         messages: {

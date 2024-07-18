@@ -94,6 +94,10 @@ export const useDesmosProfile = (options: Options) => {
   };
 
   const formatDesmosProfile = (data:DesmosProfileQuery): DesmosProfile => {
+    if (!data) {
+      return null;
+    }
+
     if (!data.profile.length) {
       return null;
     }
