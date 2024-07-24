@@ -12,10 +12,10 @@ const SingleTransactionMobile:React.FC<{
   hash: React.ReactNode;
   time: string;
   messages: string;
-  type: string;
+  type: React.ReactNode;
   result?: React.ReactNode;
 }> = ({
-  className, block, hash, time, messages, result,type,
+  className, block, hash, time, messages, result, type,
 }) => {
   const { t } = useTranslation('transactions');
   const classes = useStyles();

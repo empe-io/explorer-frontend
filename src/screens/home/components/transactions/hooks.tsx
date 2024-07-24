@@ -13,6 +13,8 @@ export const useTransactions = () => {
   useTransactionsListenerSubscription({
     onSubscriptionData: (data) => {
       setState({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         items: formatTransactions(data.subscriptionData.data),
       });
     },

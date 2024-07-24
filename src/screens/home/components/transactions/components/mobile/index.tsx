@@ -51,9 +51,6 @@ const Mobile:React.FC<{
       result: (
         <Result success={x.success} />
       ),
-      result: (
-        <Result success={x.success} />
-      ),
       time: dayjs.utc(x.timestamp).fromNow(),
       messages: numeral(x.messages).format('0,0'),
     });
