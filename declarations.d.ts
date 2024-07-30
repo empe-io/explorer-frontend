@@ -24,7 +24,7 @@ type Transactions = {
   hash: string;
   success: boolean;
   timestamp: string;
-  type: string;
+  type: string[];
   messages: {
     count: number;
     items: any[];

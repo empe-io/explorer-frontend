@@ -22,7 +22,7 @@ export const useTransactions = () => {
 
   const formatTransactions = (data: TransactionsListenerSubscription) => {
     return data.transactions.map((x) => {
-      const msgType = msgTypeFromMessages(x.messages);
+      const msgType = msgTypesFromMessages(x.messages);
       return ({
         type: msgType,
         height: x.height,
@@ -39,7 +39,7 @@ export const useTransactions = () => {
   };
 };
 
-export const msgTypeFromMessages = (messages: unknown[]) => {
+export const msgTypesFromMessages = (messages: unknown[]) => {
   const msgType = messages?.map((eachMsg: unknown) => {
     const eachMsgType = eachMsg['@type'];
     return eachMsgType ?? '';
