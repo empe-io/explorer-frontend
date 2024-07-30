@@ -10,7 +10,6 @@ import {
   Overview,
   Votes,
   Deposits,
-  VotesGraph,
 } from './components';
 import { useProposalDetails } from './hooks';
 import { shouldShowData } from './utils';
@@ -45,9 +44,6 @@ const ProposalDetails = () => {
               className={classes.overview}
               overview={overview}
             />
-            {shouldShowData(overview.status) && (
-            <VotesGraph className={classes.votesGraph} />
-            )}
             {shouldShowData(overview.status) && (
             <Votes className={classes.votes} />
             )}

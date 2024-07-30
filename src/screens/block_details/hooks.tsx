@@ -10,7 +10,7 @@ import {
 } from '@graphql/types/general_types';
 import { convertMsgsToModels } from '@msg';
 import { BlockDetailState } from './types';
-import { convertMsgType, msgTypeFromMessages } from '@screens/home/components/transactions/hooks';
+import { convertMsgType, msgTypesFromMessages } from '@screens/home/components/transactions/hooks';
 
 export const useBlockDetails = () => {
   const router = useRouter();
@@ -96,7 +96,7 @@ export const useBlockDetails = () => {
     const formatTransactions = () => {
       const transactions = data.transaction.map((x) => {
         const messages = convertMsgsToModels(x);
-        const msgType = msgTypeFromMessages(x.messages);
+        const msgType = msgTypesFromMessages(x.messages);
         return ({
           type: msgType,
           height: x.height,
