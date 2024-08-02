@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = () => {
   const styles = makeStyles(
     (theme) => {
-      return ({
+      return {
         root: {
           ...theme.mixins.layout,
           display: 'grid',
@@ -30,12 +30,12 @@ export const useStyles = () => {
           },
         },
         hero: {
+          padding: 0,
           [theme.breakpoints.up('md')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '2 / 3',
           },
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
-            // height: '400px', // if we can get the change feature
+            gridColumn: '3 / 5',
             height: '350px',
           },
         },
@@ -45,17 +45,17 @@ export const useStyles = () => {
             gridColumn: '1 / 2',
           },
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '3 / 4',
+            gridColumn: '1 / 2',
             height: '100%',
           },
         },
         consensus: {
           height: '375px',
           [theme.breakpoints.up('md')]: {
-            gridColumn: '2 / 3',
+            gridColumn: '1 / 2',
           },
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '4 / 5',
+            gridColumn: '2 / 3',
             height: '100%',
           },
         },
@@ -75,10 +75,11 @@ export const useStyles = () => {
             gridColumn: '3 / 5',
           },
         },
-      });
-    }, {
-      index: 1,
+      };
     },
+    {
+      index: 1,
+    }
   )();
 
   return styles;
