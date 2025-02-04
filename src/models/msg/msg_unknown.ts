@@ -1,4 +1,5 @@
 import { Categories } from './types';
+import { convertMsgType } from '@screens/home/components/transactions/hooks';
 
 class MsgUnknown {
   public category: Categories;
@@ -13,7 +14,7 @@ class MsgUnknown {
 
   static fromJson(json: any) {
     return new MsgUnknown({
-      type: json['@type'] ?? '',
+      type: convertMsgType([json['@type']]) ?? '',
       json,
     });
   }

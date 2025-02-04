@@ -2,13 +2,13 @@ import BlockIcon from '@assets/icon-block.svg';
 import HomeIcon from '@assets/icon-home.svg';
 import TransactionIcon from '@assets/icon-transaction.svg';
 import UserIcon from '@assets/icon-user.svg';
-import ParamIcon from '@assets/icon-param.svg';
+import AccountsIcon from '@assets/icon-accounts.svg';
 import {
   HOME,
   BLOCKS,
   VALIDATORS,
   TRANSACTIONS,
-  PARAMS,
+  ACCOUNTS,
 } from '@utils/go_to_page';
 
 export const getMenuItems = () => {
@@ -38,15 +38,15 @@ export const getMenuItems = () => {
       url: TRANSACTIONS,
       icon: <TransactionIcon {...iconProps} />,
     },
-    // {
-    //   key: 'proposals',
-    //   url: PROPOSALS,
-    //   icon: <ProposalsIcon {...iconProps} />,
-    // },
     {
-      key: 'params',
-      url: PARAMS,
-      icon: <ParamIcon {...iconProps} />,
+      key: 'accounts',
+      url: ACCOUNTS,
+      icon: <AccountsIcon {...iconProps} />,
     },
+    // {
+    //   key: 'params',
+    //   url: PARAMS,
+    //   icon: <ParamIcon {...iconProps} />,
+    // },
   ];
 };

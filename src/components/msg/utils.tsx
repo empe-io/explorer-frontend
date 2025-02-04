@@ -2,6 +2,7 @@ import * as MODELS from '@models';
 import * as R from 'ramda';
 import { Tag } from '@components';
 import * as COMPONENTS from '@msg';
+import { msgTypeFromMessages } from '@screens/home/components/transactions/hooks';
 
 const getDataByType = (type: string) => {
   // =====================================
@@ -438,6 +439,7 @@ export const getMessageModelByType = (type: string) => {
     return data.model;
   }
 
+
   return MODELS.MsgUnknown;
 };
 
@@ -475,7 +477,7 @@ export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
 
   return {
     type: <Tag
-      value={t(`message_labels:${results.tagDisplay}`)}
+      value={message.type}
       theme={results.tagTheme}
     />,
     message: <results.content message={message as any} />,
@@ -483,7 +485,7 @@ export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
 };
 
 export const convertMsgsToModels = (transaction: any) => {
-  const messages = R.pathOr([], ['messages'], transaction).map((msg, i) => {
+  const messages = R.pathOr([], ['messages'], transaction).map((msg, i) => {;
     const model = getMessageModelByType(msg?.['@type']);
     if (model === MODELS.MsgWithdrawDelegatorReward
       || model === MODELS.MsgWithdrawValidatorCommission) {

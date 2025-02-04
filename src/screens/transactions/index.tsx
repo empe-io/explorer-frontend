@@ -21,6 +21,7 @@ const Transactions = () => {
     state,
     loadNextPage,
   } = useTransactions();
+
   const loadMoreItems = state.isNextPageLoading ? () => null : loadNextPage;
   const isItemLoaded = (index) => !state.hasNextPage || index < state.items.length;
   const itemCount = state.hasNextPage ? state.items.length + 1 : state.items.length;
