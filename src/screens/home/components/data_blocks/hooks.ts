@@ -9,7 +9,6 @@ import {
   TokenPriceListenerSubscription,
   useActiveValidatorCountQuery,
   ActiveValidatorCountQuery,
-  useTxsCountQuery,
 } from '@graphql/types/general_types';
 import { chainConfig } from '@configs';
 

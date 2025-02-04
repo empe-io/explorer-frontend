@@ -21,6 +21,9 @@ import {
 function App(props: AppProps) {
   useApp();
   const { pageProps } = props;
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const apolloClient = useApollo(pageProps.initialApolloState);
   const { t } = useTranslation();
   const { location } = useWindowOrigin();

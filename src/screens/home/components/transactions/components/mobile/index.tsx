@@ -51,9 +51,6 @@ const Mobile:React.FC<{
       result: (
         <Result success={x.success} />
       ),
-      result: (
-        <Result success={x.success} />
-      ),
       time: dayjs.utc(x.timestamp).fromNow(),
       messages: numeral(x.messages).format('0,0'),
     });
@@ -64,6 +61,8 @@ const Mobile:React.FC<{
       {formattedData.map((x, i) => {
         return (
           <React.Fragment key={`${x.block}-${i}`}>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             <SingleTransactionMobile {...x} />
             {i !== formattedData.length - 1 && <Divider />}
           </React.Fragment>

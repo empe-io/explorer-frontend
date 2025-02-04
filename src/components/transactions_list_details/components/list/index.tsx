@@ -130,6 +130,8 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
                     return (
                       <div style={style}>
                         <div ref={rowRef}>
+                          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                          {/* @ts-ignore */}
                           <SingleTransaction {...item} />
                         </div>
                       </div>

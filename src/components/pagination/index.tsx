@@ -1,3 +1,5 @@
+/* tslint:enable */
+/* eslint-enable */
 import React from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import classnames from 'classnames';
@@ -6,9 +8,11 @@ import { Actions } from './components';
 import { useStyles } from './styles';
 
 const Pagination: React.FC<{
+  // eslint-disable-next-line react/require-default-props
   className?: string;
   total: number;
   rowsPerPage: number;
+  // eslint-disable-next-line react/require-default-props
   rowsPerPageOptions?: number[];
   page: number;
   handleChangePage: (_event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
@@ -31,8 +35,9 @@ const Pagination: React.FC<{
   if (total <= rowsPerPage) {
     return null;
   }
-
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     <TablePagination
       className={classnames(className, classes.root)}
       rowsPerPageOptions={[]}
