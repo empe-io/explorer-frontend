@@ -44,12 +44,9 @@ const Mobile:React.FC<{
       ),
       type: (
         <div>
-          <Tag value={x.type} theme="six" />
-          {x.messages > 1 && ` + ${x.messages - 1}`}
+          <Tag value={x.type[0]} theme="six" />
+          {x.type.length > 1 && ` + ${x.type.length - 1}`}
         </div>
-      ),
-      result: (
-        <Result success={x.success} />
       ),
       result: (
         <Result success={x.success} />
@@ -64,6 +61,8 @@ const Mobile:React.FC<{
       {formattedData.map((x, i) => {
         return (
           <React.Fragment key={`${x.block}-${i}`}>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             <SingleTransactionMobile {...x} />
             {i !== formattedData.length - 1 && <Divider />}
           </React.Fragment>

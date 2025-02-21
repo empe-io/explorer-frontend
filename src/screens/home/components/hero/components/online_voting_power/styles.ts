@@ -1,16 +1,43 @@
 import { makeStyles } from '@material-ui/core/styles';
+
 import Color from 'color';
 
 export const useStyles = (percentage: number | string) => {
   const styles = makeStyles(
     (theme) => {
-      return ({
+      return {
         root: {
+          padding: theme.spacing(4),
+          gap: theme.spacing(4),
           display: 'flex',
-          flexDirection: 'column',
+          flexWrap: 'wrap',
+          height: '100%',
+          backgroundColor: 'black',
+
+          backgroundSize: 'contain',
+          backgroundRepeat: 'repeat',
           '& .MuiTypography-h2': {
             marginBottom: theme.spacing(2),
           },
+        },
+        infoSection: {
+          flex: 3,
+          gap: theme.spacing(4),
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-around',
+          alignContent: 'space-around',
+        },
+        imageSection: {
+          flex: 5,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundSize: 'contain, cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'left',
+          minWidth: '200px',
         },
         data: {
           display: 'flex',
@@ -20,6 +47,20 @@ export const useStyles = (percentage: number | string) => {
             marginRight: theme.spacing(2),
             fontSize: '2.5rem',
           },
+        },
+        socials: {
+          display: 'flex',
+          gap: '16px',
+        },
+        text: {
+          fontSize: '1.3rem',
+          color: theme.palette.custom.fonts.fontOne,
+        },
+        empeLink: {
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px',
+          justifyContent: 'left',
         },
         chart: {
           display: 'flex',
@@ -69,8 +110,9 @@ export const useStyles = (percentage: number | string) => {
             justifyContent: 'space-between',
           },
         },
-      });
-    }, { index: 1 },
+      };
+    },
+    { index: 1 }
   )();
 
   return styles;

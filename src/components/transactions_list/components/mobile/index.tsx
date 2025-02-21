@@ -63,8 +63,8 @@ const Mobile: React.FC<TransactionsListState> = ({
     ),
     type: (
       <div>
-        <Tag value={x.type} theme="six" />
-        {x.messages.count > 1 && ` + ${x.messages.count - 1}`}
+        <Tag value={x.type[0]} theme="six" />
+        {x.type.length > 1 && ` + ${x.type.length - 1}`}
       </div>
     ),
     result: (
@@ -115,6 +115,8 @@ const Mobile: React.FC<TransactionsListState> = ({
                     return (
                       <div style={style}>
                         <div ref={rowRef}>
+                          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                          {/* @ts-ignore */}
                           <SingleTransactionMobile {...item} />
                           {index !== itemCount - 1 && <Divider />}
                         </div>
