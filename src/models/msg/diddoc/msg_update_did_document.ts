@@ -22,7 +22,7 @@ class MsgUpdateDidDocument {
       json,
       type: json['@type'],
       sender: json.sender,
-      didDocumentUpdates: json.didDocumentUpdates,
+      didDocumentUpdates: json.updated_did_document,
       signature: json.signature,
     });
   }

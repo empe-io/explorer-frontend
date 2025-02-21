@@ -12,7 +12,6 @@ const UpdateDidDocument = (props: {
   message: MsgUpdateDidDocument;
 }) => {
   const { message } = props;
-
   const from = useProfileRecoil(message.sender);
   const fromMoniker = from ? from?.name : message.sender;
 
@@ -30,7 +29,7 @@ const UpdateDidDocument = (props: {
           <b />,
         ]}
         values={{
-          didDocumentUpdates: JSON.stringify(message.didDocumentUpdates),
+          did: message.didDocumentUpdates.did_document.id,
           signature: JSON.stringify(message.signature),
         }}
       />

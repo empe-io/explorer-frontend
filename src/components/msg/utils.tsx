@@ -2,7 +2,6 @@ import * as MODELS from '@models';
 import * as R from 'ramda';
 import { Tag } from '@components';
 import * as COMPONENTS from '@msg';
-import { msgTypeFromMessages } from '@screens/home/components/transactions/hooks';
 
 const getDataByType = (type: string) => {
   // =====================================
@@ -448,6 +447,7 @@ export const getMessageModelByType = (type: string) => {
  * @param type Model type
  */
 export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
+  console.log('getMessageByType', message);
   const { type } = message;
   let results: {
     content: any;
@@ -461,7 +461,7 @@ export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
   };
 
   const data = getDataByType(type);
-
+  console.log(data);
   if (data) {
     results = {
       content: data?.content,
@@ -477,7 +477,7 @@ export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
 
   return {
     type: <Tag
-      value={message.type}
+      value={results.tagDisplay === 'txUnknownLabel' ? message.type : t(`message_labels:${results.tagDisplay}`)}
       theme={results.tagTheme}
     />,
     message: <results.content message={message as any} />,

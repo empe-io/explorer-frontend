@@ -15,7 +15,7 @@ const CreateDidDocument = (props: {
 
   const from = useProfileRecoil(message.sender);
   const fromMoniker = from ? from?.name : message.sender;
-
+  console.log(message);
   return (
     <Typography>
       <Trans
@@ -30,7 +30,7 @@ const CreateDidDocument = (props: {
           <b />,
         ]}
         values={{
-          didDocumentId: JSON.stringify(message.didDocument.id),
+          didDocumentId: message.didDocument.id,
         }}
       />
     </Typography>

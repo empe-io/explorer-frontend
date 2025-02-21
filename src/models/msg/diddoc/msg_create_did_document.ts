@@ -22,7 +22,7 @@ class MsgCreateDidDocument {
       json,
       type: json['@type'],
       sender: json.sender,
-      didDocument: json.didDocument,
+      didDocument: json.did_document,
       signatures: json.signatures,
     });
   }

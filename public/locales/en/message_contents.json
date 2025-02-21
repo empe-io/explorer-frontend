@@ -57,6 +57,6 @@
   "MsgCreateVestingAccount": "Vesting account created for <0>{{toAddress}}</0>",
   "MsgCreatePeriodicVestingAccount": "Periodic vesting account created for <0>{{toAddress}}</0>",
   "txCreateDidDocumentContent": "<0>{{user}}</0> created a new DID document with id {{didDocumentId}}",
-  "txUpdateDidDocumentContent": "<0>{{user}}</0> updated DID document with id {{didDocumentId}}",
-  "txDeactivateDidDocumentContent": "<0>{{user}}</0> deactivated DID document with id {{didDocumentId}}"
+  "txUpdateDidDocumentContent": "<0>{{user}}</0> updated DID document with id {{did}}",
+  "txDeactivateDidDocumentContent": "<0>{{user}}</0> deactivated DID document with id {{did}}"
 }
