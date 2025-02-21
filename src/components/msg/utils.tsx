@@ -106,13 +106,13 @@ const getDataByType = (type: string) => {
     // ========================
     // governance
     // ========================
-    '/cosmos.gov.v1beta1.MsgDeposit': {
+    '/cosmos.gov.v1.MsgDeposit': {
       model: MODELS.MsgDeposit,
       content: COMPONENTS.DepositProposal,
       tagTheme: 'seven',
       tagDisplay: 'txDepositLabel',
     },
-    '/cosmos.gov.v1beta1.MsgVote': {
+    '/cosmos.gov.v1.MsgVote': {
       model: MODELS.MsgVote,
       content: COMPONENTS.Vote,
       tagTheme: 'seven',
