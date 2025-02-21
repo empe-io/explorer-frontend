@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { convertMsgsToModels } from '@msg';
 import * as R from 'ramda';
 import { GetMessagesByAddressQuery, useGetMessagesByAddressQuery } from '@graphql/types/general_types';
-import { msgTypeFromMessages } from '@screens/home/components/transactions/hooks';
+import { msgTypesFromMessages } from '@screens/home/components/transactions/hooks';
 import { TransactionState } from './types';
 
 const LIMIT = 50;
@@ -77,7 +77,7 @@ export const useTransactions = () => {
       // =============================
 
       const messages = convertMsgsToModels(transaction);
-      const msgType = msgTypeFromMessages(x.transaction.messages);
+      const msgType = msgTypesFromMessages(x.transaction.messages);
       return ({
         type: msgType,
         height: transaction.height,

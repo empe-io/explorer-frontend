@@ -31,5 +31,6 @@
   "powerChange": "<0>{{change}}</0> at block ",
   "validators": "Validators",
   "priceHistory": "Price (~24h)",
-  "accounts": "Top Accounts"
+  "accounts": "Top Accounts",
+  "followUs": "Follow us on"
 }

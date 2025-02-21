@@ -7,6 +7,7 @@ import {
   GetMessagesByAddressQuery,
 } from '@graphql/types/general_types';
 import { TransactionState } from './types';
+import { msgTypesFromMessages } from '@screens/home/components/transactions/hooks';
 
 const LIMIT = 50;
 
@@ -78,10 +79,11 @@ export const useTransactions = () => {
       // messages
       // =============================
       const messages = convertMsgsToModels(transaction);
-
+      const msgType = msgTypesFromMessages(x.transaction.messages);
       return ({
         height: transaction.height,
         hash: transaction.hash,
+        type: msgType,
         messages: {
           count: messages.length,
           items: messages,

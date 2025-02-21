@@ -44,8 +44,8 @@ const Mobile:React.FC<{
       ),
       type: (
         <div>
-          <Tag value={x.type} theme="six" />
-          {x.messages > 1 && ` + ${x.messages - 1}`}
+          <Tag value={x.type[0]} theme="six" />
+          {x.type.length > 1 && ` + ${x.type.length - 1}`}
         </div>
       ),
       result: (
