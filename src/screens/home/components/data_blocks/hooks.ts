@@ -2,15 +2,16 @@ import { useState } from 'react';
 import * as R from 'ramda';
 import numeral from 'numeral';
 import {
-  useLatestBlockHeightListenerSubscription,
-  useAverageBlockTimeQuery,
+  ActiveValidatorCountQuery,
   AverageBlockTimeQuery,
-  useTokenPriceListenerSubscription,
   TokenPriceListenerSubscription,
   useActiveValidatorCountQuery,
-  ActiveValidatorCountQuery,
+  useAverageBlockTimeQuery,
+  useLatestBlockHeightListenerSubscription,
+  useTokenPriceListenerSubscription,
 } from '@graphql/types/general_types';
 import { chainConfig } from '@configs';
+import { GraphQLClient } from './graphQLClient';
 
 export const useDataBlocks = () => {
   const [state, setState] = useState<{
@@ -20,7 +21,6 @@ export const useDataBlocks = () => {
     counters: {
       allTx: number;
       didCreated: number;
-      bankTxCreated: number;
     };
     validators: {
       active: number;
@@ -33,7 +33,6 @@ export const useDataBlocks = () => {
     counters: {
       allTx: 0,
       didCreated: 0,
-      bankTxCreated: 0,
     },
     validators: {
       active: 0,
@@ -41,27 +40,15 @@ export const useDataBlocks = () => {
     },
   });
 
-  const handleCountersData = async (res: Response) => {
-    let counters = {
-      allTx: 0,
-      didCreated: 0,
-      bankTxCreated: 0,
-    };
-
-    if (!res.ok) {
-      setState((prevState) => ({
-        ...prevState,
-        counters,
-      }));
-
-      return;
+  const handleCountersData = async (res: {
+    data: {
+      did_document_aggregate: { aggregate: { count: number } },
+      transaction_aggregate: { aggregate: { count: number } }
     }
-
-    const data = await res.json();
-    counters = {
-      allTx: 0,
-      didCreated: data['empe.diddoc.MsgCreateDidDocument'],
-      bankTxCreated: data['cosmos.bank.v1beta1.MsgSend'],
+  }) => {
+    const counters = {
+      allTx: res.data.transaction_aggregate.aggregate.count,
+      didCreated:  res.data.did_document_aggregate.aggregate.count,
     };
 
     setState((prevState) => ({
@@ -81,7 +68,31 @@ export const useDataBlocks = () => {
         blockHeight: R.pathOr(0, ['height', 0, 'height'], data.subscriptionData.data),
       }));
 
-      fetch('https://p0k5m1l3wh.execute-api.eu-central-1.amazonaws.com/counters').then((res) => handleCountersData(res));
+      const client = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_URL);
+
+      const QUERY = `query GetTopAccountsCount {
+  did_document_aggregate {
+    aggregate {
+      count
+    }
+  },
+  transaction_aggregate {
+    aggregate {
+      count
+    }
+  }
+} `;
+
+      const res = await client.query<{
+        data: {
+          did_document_aggregate: { aggregate: { count: number } },
+          transaction_aggregate: { aggregate: { count: number } }
+        }
+      }>(QUERY);
+
+      console.log(res);
+
+      await handleCountersData(res);
     },
   });
 

@@ -16,7 +16,7 @@ const DataBlocks: React.FC<{
   const data = [
     {
       key: 'Transactions Created',
-      value: state.counters.didCreated + state.counters.bankTxCreated,
+      value: state.counters.allTx ,
       className: classes.blockHeight,
     },
     {
