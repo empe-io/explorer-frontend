@@ -1,7 +1,7 @@
 export class GraphQLClient {
   constructor(public readonly base_url: string) {}
 
-  async query<T>(query: string, variables: object = {}): Promise<T> {
+  async query(query: string, variables: object = {}): Promise<any> {
     const req = {
       query,
       variables,
@@ -21,6 +21,6 @@ export class GraphQLClient {
       throw new Error(`Query failed: ${JSON.stringify(json.errors)}`);
     }
 
-    return json as T;
+    return json;
   }
 }

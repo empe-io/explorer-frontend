@@ -83,12 +83,7 @@ export const useDataBlocks = () => {
   }
 } `;
 
-      const res = await client.query<{
-        data: {
-          did_document_aggregate: { aggregate: { count: number } },
-          transaction_aggregate: { aggregate: { count: number } }
-        }
-      }>(QUERY);
+      const res = await client.query(QUERY);
 
       console.log(res);
 
